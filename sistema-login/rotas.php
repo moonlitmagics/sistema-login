@@ -1,21 +1,4 @@
 <?php
-require_once "service/userservice.php";
-
-$action = $_GET['action'] ?? null;
-$service = new userservice();
-
-if ($action === 'registro') {
-    $service->registro($_POST['nome'], $_POST['dataNasc'], $_POST['email'], $_POST['senha'], $_POST['endereço']);
-    header("Location: login.php");
-} elseif ($action === 'login') {
-    if ($service->login($_POST['email'], $_POST['senha'])) {
-        echo "Login com sucesso!";
-    } else {
-        echo "email ou senha invalida.";
-    }
-}
-
-<?php
 
 require_once "controller/UserController.php";
 require_once "model/Database.php";
@@ -48,5 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['act
         echo "Erro: " . $resultado;
     }
 }
+    
 ?>
 
